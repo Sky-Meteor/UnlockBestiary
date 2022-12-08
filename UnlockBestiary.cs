@@ -68,8 +68,8 @@ namespace UnlockBestiary
 	{
 		public override void OnEnterWorld(Player player)
 		{
-			Main.NewText("此Mod仅供测试用，在正常游玩的世界使用指令可能会造成不可挽回的后果" +
-                "/UnlockBestiary解锁图鉴（除了某几个NPC，我也不知道为什么解锁不了，摸了），/LockBestiary锁定全部图鉴");
+			Main.NewText("姝od浠呬緵娴嬭瘯鐢紝鍦ㄦ甯告父鐜╃殑涓栫晫浣跨敤鎸囦护鍙兘浼氶�犳垚涓嶅彲鎸藉洖鐨勫悗鏋淺n" +
+                "/UnlockBestiary瑙ｉ攣鍥鹃壌锛堥櫎浜嗘煇鍑犱釜NPC锛屾垜涔熶笉鐭ラ亾涓轰粈涔堣В閿佷笉浜嗭紝鎽镐簡锛夛紝/LockBestiary閿佸畾鍏ㄩ儴鍥鹃壌");
 		}
 	}
 }
