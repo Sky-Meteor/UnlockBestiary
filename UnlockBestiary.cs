@@ -64,12 +64,12 @@ namespace UnlockBestiary
         }
     }
 
-    public class UBPlayer : ModPlayer
-    {
-        public override void OnEnterWorld(Player player)
-        {
-            Main.NewText("��Mod���������ã����������������ʹ��ָ����ܻ���ɲ�����صĺ��" +
-                "/UnlockBestiary����ͼ��������ĳ����NPC����Ҳ��֪��Ϊʲô�������ˣ����ˣ���/LockBestiary����ȫ��ͼ��");
-        }
-    }
+	public class UBPlayer : ModPlayer
+	{
+		public override void OnEnterWorld(Player player)
+		{
+			Main.NewText("此Mod仅供测试用，在正常游玩的世界使用指令可能会造成不可挽回的后果\n" +
+                "/UnlockBestiary解锁图鉴（除了某几个NPC，我也不知道为什么解锁不了，摸了），/LockBestiary锁定全部图鉴");
+		}
+	}
 }
