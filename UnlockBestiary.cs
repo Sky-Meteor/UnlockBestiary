@@ -1,3 +1,4 @@
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,13 +27,16 @@ namespace UnlockBestiary
                 npc.checkDead();
 				npc.active = false;
             }
-			foreach (NPC npc in Main.npc)
+			while (Main.npc[0].active)
 			{
-                Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
-                Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
-                npc.life = 0;
-                npc.checkDead();
-				npc.active = false;
+				foreach (NPC npc in Main.npc)
+				{
+					Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
+					Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
+					npc.life = 0;
+					npc.checkDead();
+					npc.active = false;
+				}
 			}
 		}
 	}
@@ -57,6 +61,15 @@ namespace UnlockBestiary
             for (int i = 0; i < 50; i++)
                 Main.BestiaryTracker.Kills.RegisterKill(npc);
             return true;
+		}
+	}
+
+	public class UBPlayer : ModPlayer
+	{
+		public override void OnEnterWorld(Player player)
+		{
+			Main.NewText("此Mod仅供测试用，在正常游玩的世界使用指令可能会造成不可挽回的后果" +
+                "/UnlockBestiary解锁图鉴（除了某几个NPC，我也不知道为什么解锁不了，摸了），/LockBestiary锁定全部图鉴");
 		}
 	}
 }
