@@ -5,71 +5,71 @@ using Terraria.ModLoader;
 
 namespace UnlockBestiary
 {
-	public class UnlockBestiary : Mod
-	{
+    public class UnlockBestiary : Mod
+    {
 
-	}
+    }
 
-	public class UnlockBestiaryCommand : ModCommand
-	{
-		public override CommandType Type => CommandType.Chat;
+    public class UnlockBestiaryCommand : ModCommand
+    {
+        public override CommandType Type => CommandType.Chat;
 
-		public override string Command => "UnlockBestiary";
+        public override string Command => "UnlockBestiary";
 
-		public override void Action(CommandCaller caller, string input, string[] args)
-		{
-			for (int i = 0; i < NPCLoader.NPCCount; i++)
-			{
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+            for (int i = 0; i < NPCLoader.NPCCount; i++)
+            {
                 NPC npc = NPC.NewNPCDirect(null, caller.Player.position, i);
-				Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
-				Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
+                Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
+                Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
                 npc.life = 0;
                 npc.checkDead();
-				npc.active = false;
+                npc.active = false;
             }
-			while (Main.npc[0].active)
-			{
-				foreach (NPC npc in Main.npc)
-				{
-					Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
-					Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
-					npc.life = 0;
-					npc.checkDead();
-					npc.active = false;
-				}
-			}
-		}
-	}
+            while (Main.npc[0].active)
+            {
+                foreach (NPC npc in Main.npc)
+                {
+                    Main.BestiaryTracker.Chats.RegisterChatStartWith(npc);
+                    Main.BestiaryTracker.Sights.RegisterWasNearby(npc);
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.active = false;
+                }
+            }
+        }
+    }
 
-	public class LockBestiaryCommand : ModCommand
-	{
-		public override CommandType Type => CommandType.Chat;
+    public class LockBestiaryCommand : ModCommand
+    {
+        public override CommandType Type => CommandType.Chat;
 
-		public override string Command => "LockBestiary";
+        public override string Command => "LockBestiary";
 
-		public override void Action(CommandCaller caller, string input, string[] args)
-		{
-			Main.BestiaryTracker.Kills.Reset();
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+            Main.BestiaryTracker.Kills.Reset();
             Main.BestiaryTracker.Reset();
         }
-	}
+    }
 
-	public class UBGlobalNPC : GlobalNPC
-	{
-		public override bool CheckDead(NPC npc)
-		{
+    public class UBGlobalNPC : GlobalNPC
+    {
+        public override bool CheckDead(NPC npc)
+        {
             for (int i = 0; i < 50; i++)
                 Main.BestiaryTracker.Kills.RegisterKill(npc);
             return true;
-		}
-	}
+        }
+    }
 
-	public class UBPlayer : ModPlayer
-	{
-		public override void OnEnterWorld(Player player)
-		{
-			Main.NewText("´ËMod½ö¹©²âÊÔÓÃ£¬ÔÚÕý³£ÓÎÍæµÄÊÀ½çÊ¹ÓÃÖ¸Áî¿ÉÄÜ»áÔì³É²»¿ÉÍì»ØµÄºó¹û" +
-                "/UnlockBestiary½âËøÍ¼¼ø£¨³ýÁËÄ³¼¸¸öNPC£¬ÎÒÒ²²»ÖªµÀÎªÊ²Ã´½âËø²»ÁË£¬ÃþÁË£©£¬/LockBestiaryËø¶¨È«²¿Í¼¼ø");
-		}
-	}
+    public class UBPlayer : ModPlayer
+    {
+        public override void OnEnterWorld(Player player)
+        {
+            Main.NewText("ï¿½ï¿½Modï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ü»ï¿½ï¿½ï¿½É²ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄºï¿½ï¿½" +
+                "/UnlockBestiaryï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Öªï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½/LockBestiaryï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Í¼ï¿½ï¿½");
+        }
+    }
 }
